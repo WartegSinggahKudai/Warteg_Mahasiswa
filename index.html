@@ -428,38 +428,54 @@
         }
         .footer-info strong { color: var(--color-biru); }
 
-        /* --- RESPONSIVE ADJUSTMENTS --- */
 /* --- RESPONSIVE ADJUSTMENTS --- */
         @media (max-width: 600px) {
-            .logo-img { width: 50px; }
-            .header-text h1 { font-size: 1.5rem; }
-            .header { padding: 40px 15px; }
+            .container { padding: 10px; }
+            .section-title { font-size: 1.1rem; margin: 20px 0 15px; }
+            .logo-img { width: 40px; }
+            .header-text h1 { font-size: 1.3rem; }
+            .header { padding: 30px 10px; }
 
-            /* Supaya menu bisa 2 kolom kesamping di HP */
-.menu-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: 30px;
-}
-
-            /* Penyesuaian ukuran card agar pas di layar kecil */
-            .menu-img-wrapper { height: 140px; }
-            .menu-content { padding: 12px; }
-            .menu-content h3 { font-size: 0.9rem; height: 3em; }
-            .price { font-size: 1rem; }
-            
-            .qty-control { gap: 5px; padding: 5px; }
-            .qty-btn { width: 30px; height: 30px; font-size: 1rem; }
-            .qty-input { width: 35px; font-size: 1rem; }
-
-            .checkout-bar { 
-                padding: 10px 20px; 
-                width: 95%; 
-                flex-direction: row; /* Tetap sejajar kiri-kanan */
-                border-radius: 50px;
+            /* Paksa jadi 3 kolom menyamping */
+            .menu-grid { 
+                grid-template-columns: repeat(3, 1fr); 
+                gap: 8px; 
             }
-            .total-info p { font-size: 1.1rem; }
-            .btn-send { padding: 8px 15px; font-size: 0.8rem; }
+
+            /* Penyesuaian ukuran elemen agar muat di 3 kolom */
+            .menu-img-wrapper { height: 80px; } /* Gambar diperkecil */
+            .menu-content { padding: 8px; }
+            .menu-content h3 { 
+                font-size: 0.7rem; /* Font nama menu diperkecil */
+                height: 2.5em; 
+                margin-bottom: 5px;
+            }
+            .price { font-size: 0.75rem; }
+            
+            .qty-control { 
+                gap: 3px; 
+                padding: 4px; 
+                border-radius: 8px;
+            }
+            .qty-btn { 
+                width: 22px; 
+                height: 22px; 
+                font-size: 0.8rem; 
+                border-width: 1px;
+            }
+            .qty-input { 
+                width: 20px; 
+                font-size: 0.8rem; 
+            }
+
+            /* Checkout bar tetap nyaman di klik */
+            .checkout-bar { 
+                padding: 10px 15px; 
+                width: 95%; 
+                border-radius: 30px;
+            }
+            .total-info p { font-size: 1rem; }
+            .btn-send { padding: 8px 12px; font-size: 0.7rem; }
         }
     </style>
 </head>
