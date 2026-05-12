@@ -429,12 +429,37 @@
         .footer-info strong { color: var(--color-biru); }
 
         /* --- RESPONSIVE ADJUSTMENTS --- */
+/* --- RESPONSIVE ADJUSTMENTS --- */
         @media (max-width: 600px) {
-            .logo-img { width: 60px; }
-            .header-text h1 { font-size: 1.8rem; }
-            .menu-grid { grid-template-columns: 1fr; gap: 20px;}
-            .checkout-bar { padding: 10px 20px; width: 95%; max-width: 400px; flex-direction: column; gap: 10px; border-radius: 20px;}
-            .total-info p { font-size: 1.2rem;}
+            .logo-img { width: 50px; }
+            .header-text h1 { font-size: 1.5rem; }
+            .header { padding: 40px 15px; }
+
+            /* Supaya menu bisa 2 kolom kesamping di HP */
+.menu-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 30px;
+}
+
+            /* Penyesuaian ukuran card agar pas di layar kecil */
+            .menu-img-wrapper { height: 140px; }
+            .menu-content { padding: 12px; }
+            .menu-content h3 { font-size: 0.9rem; height: 3em; }
+            .price { font-size: 1rem; }
+            
+            .qty-control { gap: 5px; padding: 5px; }
+            .qty-btn { width: 30px; height: 30px; font-size: 1rem; }
+            .qty-input { width: 35px; font-size: 1rem; }
+
+            .checkout-bar { 
+                padding: 10px 20px; 
+                width: 95%; 
+                flex-direction: row; /* Tetap sejajar kiri-kanan */
+                border-radius: 50px;
+            }
+            .total-info p { font-size: 1.1rem; }
+            .btn-send { padding: 8px 15px; font-size: 0.8rem; }
         }
     </style>
 </head>
