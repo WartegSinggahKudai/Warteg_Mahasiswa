@@ -1,33 +1,38 @@
-<!DOCTYPE html>
 <html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Warteg Singgah Kudai - Premium Order Experience</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <title>Warteg Singgah Kudai - Premium Order</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;700;800&display=swap" rel="stylesheet">
     <style>
         :root {
-            --color-kuning: #FFD700; /* Emas */
-            --color-oranye: #FF8C00; /* Deep Orange */
-            --color-biru: #0047AB;   /* Cobalt Blue */
-            --color-ungu: #6A0DAD;   /* Premium Purple */
-            --dark: #1a1a1a;
-            --light: #ffffff;
+            --primary: #FF8C00;    /* Deep Orange */
+            --secondary: #FFD700;  /* Gold/Yellow */
+            --accent: #FF5F1F;     /* Neon Orange */
+            --white: #ffffff;
+            --light-bg: #fdfdfd;
+            --dark: #2d3436;
+            --glass: rgba(255, 255, 255, 0.8);
+            --shadow: 0 10px 30px rgba(255, 140, 0, 0.1);
+            --ease: cubic-bezier(0.34, 1.56, 0.64, 1);
+            --color-kuning: #FFD700;
+            --color-oranye: #FF8C00;
+            --color-biru: #0047AB;
+            --color-ungu: #6A0DAD;
             --bg: #f0f3f5;
-            --ease: cubic-bezier(0.23, 1, 0.32, 1);
         }
 
-        * { box-sizing: border-box; }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        
         body {
-            font-family: 'Poppins', sans-serif;
+            font-family: 'Plus Jakarta Sans', sans-serif;
             background-color: var(--bg);
             color: var(--dark);
-            margin: 0;
             overflow-x: hidden;
             scroll-behavior: smooth;
         }
 
-        /* --- Keyframes Animations --- */
+        /* --- Keyframes --- */
         @keyframes headerLoad {
             from { opacity: 0; transform: translateY(-50px); }
             to { opacity: 1; transform: translateY(0); }
@@ -97,191 +102,23 @@
             border-bottom: 2px solid var(--color-biru); display: inline-block; padding-bottom: 5px;
         }
 
-        /* --- MAIN CONTAINER --- */
-        .container { max-width: 1200px; margin: 0 auto; padding: 30px; }
-
-        .section-title {
-            font-size: 1.6rem; margin: 50px 0 30px; display: flex; align-items: center; gap: 15px;
-            font-weight: 700; color: var(--color-biru);
-            position: relative;
-        }
-        .section-title::after {
-            content: ""; flex-grow: 1; height: 3px;
-            background: linear-gradient(to right, var(--color-biru), var(--color-ungu), transparent);
-            border-radius: 10px;
-        }
-
-        /* --- MENU GRID --- */
-        .menu-grid {
-            display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 30px;
-            perspective: 1000px; /* Buat efek 3D hover */
-        }
-
-        .menu-card {
-            background: rgba(255, 255, 255, 0.7);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255,255,255,0.2);
-            border-radius: 25px; overflow: hidden;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.04);
-            transition: all 0.5s var(--ease);
-            animation: cardLoad 0.6s var(--ease) backwards;
-            display: flex; flex-direction: column;
-            transform-style: preserve-3d; /* Hover 3D */
-        }
-
-        .menu-card:hover {
-            transform: translateY(-15px) rotateX(5deg);
-            box-shadow: 0 25px 50px rgba(106,13,173,0.15);
-            border-color: rgba(106,13,173,0.3);
-        }
-
-        /* --- Interaktif: Menambah Kelas saat ada Jumlah --- */
-        .menu-card.has-order {
-            animation: glowPulse 2s infinite;
-            border-color: var(--color-oranye);
-        }
-
-        .menu-img-wrapper { position: relative; overflow: hidden; height: 210px; }
-        .menu-img {
-            width: 100%; height: 100%; object-fit: cover;
-            transition: transform 0.6s var(--ease);
-        }
-        .menu-card:hover .menu-img { transform: scale(1.15); }
-
-        .menu-img-wrapper::after {
-            content: ''; position: absolute; bottom: 0; left: 0; width: 100%; height: 40%;
-            background: linear-gradient(to top, rgba(0,0,0,0.5), transparent);
-        }
-
-        .menu-content { padding: 25px; flex-grow: 1; display: flex; flex-direction: column; }
-        .menu-content h3 {
-            margin: 0; font-size: 1.2rem; font-weight: 600; color: var(--dark);
-            height: 2.8em; overflow: hidden; line-height: 1.4;
-            transition: color 0.3s;
-        }
-        .menu-card:hover h3 { color: var(--color-biru); }
-
-        .price-row {
-            display: flex; justify-content: space-between; align-items: center;
-            margin: 15px 0 20px;
-        }
-        .price {
-            color: var(--color-oranye); font-weight: 800; font-size: 1.3rem; margin: 0;
-            background: linear-gradient(to right, var(--color-ungu), var(--color-oranye));
-            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-        }
-
-        .qty-control {
-            display: flex; align-items: center; justify-content: center; gap: 10px;
-            background: rgba(0,71,171, 0.05); padding: 10px; border-radius: 15px;
-            transition: background 0.3s;
-        }
-        .menu-card:hover .qty-control { background: rgba(0,71,171, 0.1); }
-
-        .qty-btn {
-            background: var(--light); border: 2px solid var(--color-biru); color: var(--color-biru);
-            width: 40px; height: 40px; border-radius: 10px;
-            font-size: 1.3rem; font-weight: 700; cursor: pointer;
-            transition: all 0.3s; display: flex; align-items: center; justify-content: center;
-        }
-        .qty-btn:hover { background: var(--color-biru); color: var(--light); transform: scale(1.1); }
-        .qty-btn:active { transform: scale(0.95); }
-
-        .qty-input {
-            width: 60px; border: none; background: transparent; text-align: center;
-            font-weight: 800; font-size: 1.2rem; color: var(--color-ungu);
+        /* Tombol Tentang */
+        .btn-about {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid var(--color-kuning);
+            color: var(--color-kuning);
+            padding: 8px 20px;
+            border-radius: 20px;
+            cursor: pointer;
+            margin-top: 15px;
             font-family: inherit;
+            font-weight: 600;
+            transition: all 0.3s;
+            backdrop-filter: blur(5px);
         }
-
-        :root {
-            --color-kuning: #FFD700; /* Kuning Emas */
-            --color-oranye: #FF8C00; /* Deep Orange Menggugah */
-            --color-biru: #0047AB;   /* Cobalt Blue Profesional */
-            --color-ungu: #6A0DAD;   /* Premium Purple */
-            --dark: #1a1a1a;
-            --light: #ffffff;
-            --bg: #f0f3f5;
-            --ease: cubic-bezier(0.23, 1, 0.32, 1); /* Efek animasi smooth */
-        }
-
-        * { box-sizing: border-box; }
-        body {
-            font-family: 'Poppins', sans-serif;
-            background-color: var(--bg);
-            color: var(--dark);
-            margin: 0;
-            overflow-x: hidden;
-            scroll-behavior: smooth;
-        }
-
-        /* --- Keyframes Animations --- */
-        @keyframes headerLoad {
-            from { opacity: 0; transform: translateY(-50px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        @keyframes cardLoad {
-            from { opacity: 0; transform: translateY(40px) scale(0.9); }
-            to { opacity: 1; transform: translateY(0) scale(1); }
-        }
-        @keyframes glowPulse {
-            0%, 100% { box-shadow: 0 0 10px rgba(106, 13, 173, 0.3); }
-            50% { box-shadow: 0 0 25px rgba(255, 140, 0, 0.5); }
-        }
-
-        /* --- Custom Scrollbar --- */
-        ::-webkit-scrollbar { width: 10px; }
-        ::-webkit-scrollbar-track { background: var(--bg); }
-        ::-webkit-scrollbar-thumb {
-            background: linear-gradient(var(--color-ungu), var(--color-oranye));
-            border-radius: 10px;
-        }
-
-        /* --- HEADER AREA --- */
-        .header {
-            background: linear-gradient(135deg, rgba(26,26,26,0.95), rgba(26,26,26,0.85)), url('image_e08f90.jpg');
-            background-size: cover;
-            background-position: center;
-            color: white;
-            text-align: center;
-            padding: 70px 20px;
-            border-radius: 0 0 40px 40px;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.2);
-            animation: headerLoad 1s var(--ease);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .header::after {
-            content: ''; position: absolute; bottom: -10%; left: -10%; width: 120%; height: 50%;
-            background: linear-gradient(to top, var(--bg), transparent);
-            pointer-events: none;
-        }
-
-        .header-content {
-            display: flex; align-items: center; justify-content: center;
-            gap: 25px; flex-wrap: wrap; max-width: 900px; margin: 0 auto;
-            position: relative; z-index: 2;
-        }
-
-        .logo-img {
-            width: 80px; height: auto;
-            filter: drop-shadow(0 0 12px rgba(255,215,0,0.6));
-            transition: transform 0.5s var(--ease);
-        }
-        .logo-img:hover { transform: rotate(15deg) scale(1.1); }
-
-        .header-text h1 {
-            margin: 0; font-size: 2.8rem; font-weight: 800;
-            text-transform: uppercase; letter-spacing: 2px;
-            background: linear-gradient(45deg, var(--color-kuning), var(--color-oranye));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));
-        }
-        .header-text p {
-            margin: 8px 0 0; font-weight: 300; font-size: 0.95rem;
-            color: rgba(255,255,255,0.8);
-            border-bottom: 2px solid var(--color-biru); display: inline-block; padding-bottom: 5px;
+        .btn-about:hover {
+            background: var(--color-kuning);
+            color: black;
         }
 
         /* --- MAIN CONTAINER --- */
@@ -301,7 +138,7 @@
         /* --- MENU GRID --- */
         .menu-grid {
             display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 30px;
-            perspective: 1000px; /* Buat efek 3D hover nanti */
+            perspective: 1000px;
         }
 
         .menu-card {
@@ -313,7 +150,7 @@
             transition: all 0.5s var(--ease);
             animation: cardLoad 0.6s var(--ease) backwards;
             display: flex; flex-direction: column;
-            transform-style: preserve-3d; /* Hover 3D */
+            transform-style: preserve-3d;
         }
 
         .menu-card:hover {
@@ -322,7 +159,6 @@
             border-color: rgba(106,13,173,0.3);
         }
 
-        /* --- Interaktif: Menambah Kelas saat ada Jumlah --- */
         .menu-card.has-order {
             animation: glowPulse 2s infinite;
             border-color: var(--color-oranye);
@@ -335,25 +171,14 @@
         }
         .menu-card:hover .menu-img { transform: scale(1.15); }
 
-        .menu-img-wrapper::after {
-            content: ''; position: absolute; bottom: 0; left: 0; width: 100%; height: 40%;
-            background: linear-gradient(to top, rgba(0,0,0,0.5), transparent);
-        }
-
         .menu-content { padding: 25px; flex-grow: 1; display: flex; flex-direction: column; }
         .menu-content h3 {
             margin: 0; font-size: 1.2rem; font-weight: 600; color: var(--dark);
             height: 2.8em; overflow: hidden; line-height: 1.4;
-            transition: color 0.3s;
         }
-        .menu-card:hover h3 { color: var(--color-biru); }
-
-        .price-row {
-            display: flex; justify-content: space-between; align-items: center;
-            margin: 15px 0 20px;
-        }
+        
         .price {
-            color: var(--color-oranye); font-weight: 800; font-size: 1.3rem; margin: 0;
+            color: var(--color-oranye); font-weight: 800; font-size: 1.3rem; margin: 15px 0 20px;
             background: linear-gradient(to right, var(--color-ungu), var(--color-oranye));
             -webkit-background-clip: text; -webkit-text-fill-color: transparent;
         }
@@ -361,26 +186,22 @@
         .qty-control {
             display: flex; align-items: center; justify-content: center; gap: 10px;
             background: rgba(0,71,171, 0.05); padding: 10px; border-radius: 15px;
-            transition: background 0.3s;
         }
-        .menu-card:hover .qty-control { background: rgba(0,71,171, 0.1); }
 
         .qty-btn {
-            background: var(--light); border: 2px solid var(--color-biru); color: var(--color-biru);
+            background: white; border: 2px solid var(--color-biru); color: var(--color-biru);
             width: 40px; height: 40px; border-radius: 10px;
             font-size: 1.3rem; font-weight: 700; cursor: pointer;
             transition: all 0.3s; display: flex; align-items: center; justify-content: center;
         }
-        .qty-btn:hover { background: var(--color-biru); color: var(--light); transform: scale(1.1); }
-        .qty-btn:active { transform: scale(0.95); }
+        .qty-btn:hover { background: var(--color-biru); color: white; transform: scale(1.1); }
 
         .qty-input {
             width: 60px; border: none; background: transparent; text-align: center;
             font-weight: 800; font-size: 1.2rem; color: var(--color-ungu);
-            font-family: inherit;
         }
 
-        /* --- FLOATING CHECKOUT BAR (Interaktif & Animasi) --- */
+        /* --- FLOATING CHECKOUT BAR --- */
         .checkout-bar {
             position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%);
             width: 90%; max-width: 600px;
@@ -390,10 +211,10 @@
             display: flex; justify-content: space-between; align-items: center;
             box-shadow: 0 20px 40px rgba(0,0,0,0.2); z-index: 1000;
             border: 1px solid rgba(255,255,255,0.4);
-            transform: translateX(-50%) translateY(100px); /* Tersembunyi di bawah */
+            transform: translateX(-50%) translateY(100px);
             transition: transform 0.5s var(--ease), opacity 0.5s;
             opacity: 0;
-            pointer-events: none; /* Nonaktif saat sembunyi */
+            pointer-events: none;
         }
 
         .checkout-bar.visible {
@@ -402,81 +223,87 @@
             pointer-events: auto;
         }
 
-        .total-info h4 { margin: 0; font-size: 0.8rem; text-transform: uppercase; color: var(--color-ungu); font-weight: 600; }
-        .total-info p { margin: 0; font-size: 1.4rem; font-weight: 800; color: var(--dark); }
+        .total-info p { margin: 0; font-size: 1.4rem; font-weight: 800; }
 
         .btn-send {
             background: linear-gradient(135deg, var(--color-ungu), var(--color-oranye));
             color: white; padding: 12px 30px; border-radius: 30px;
-            text-decoration: none; font-weight: 700;
+            font-weight: 700; border: none; cursor: pointer;
             display: flex; align-items: center; gap: 10px;
-            font-size: 0.95rem; border: none; cursor: pointer;
-            transition: all 0.3s;
-            box-shadow: 0 5px 15px rgba(106,13,173,0.3);
+            transition: 0.3s;
         }
 
-        .btn-send:hover {
-            box-shadow: 0 10px 25px rgba(255,140,0,0.4);
-            transform: scale(1.05) translateY(-3px);
+        /* --- MODAL ABOUT --- */
+        .modal {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.8);
+            display: none; align-items: center; justify-content: center;
+            z-index: 9999; padding: 20px;
+            backdrop-filter: blur(8px);
         }
-        .btn-send:active { transform: scale(0.98); }
-
-        /* --- FOOTER & ADDRESS --- */
-        .footer-info {
-            text-align: center; padding: 60px 20px 140px; color: #7f8c8d;
-            font-size: 0.85rem; border-top: 1px solid #ddd; margin-top: 60px;
+        .modal-content {
+            background: white; padding: 40px; border-radius: 30px;
+            max-width: 500px; width: 100%; text-align: center;
+            position: relative; animation: cardLoad 0.5s var(--ease);
         }
-        .footer-info strong { color: var(--color-biru); }
-
-/* --- RESPONSIVE ADJUSTMENTS --- */
-        @media (max-width: 600px) {
-            .container { padding: 10px; }
-            .section-title { font-size: 1.1rem; margin: 20px 0 15px; }
-            .logo-img { width: 40px; }
-            .header-text h1 { font-size: 1.3rem; }
-            .header { padding: 30px 10px; }
-
-            /* Paksa jadi 3 kolom menyamping */
-            .menu-grid { 
-                grid-template-columns: repeat(3, 1fr); 
-                gap: 8px; 
-            }
-
-            /* Penyesuaian ukuran elemen agar muat di 3 kolom */
-            .menu-img-wrapper { height: 80px; } /* Gambar diperkecil */
-            .menu-content { padding: 8px; }
-            .menu-content h3 { 
-                font-size: 0.7rem; /* Font nama menu diperkecil */
-                height: 2.5em; 
-                margin-bottom: 5px;
-            }
-            .price { font-size: 0.75rem; }
-            
-            .qty-control { 
-                gap: 3px; 
-                padding: 4px; 
-                border-radius: 8px;
-            }
-            .qty-btn { 
-                width: 22px; 
-                height: 22px; 
-                font-size: 0.8rem; 
-                border-width: 1px;
-            }
-            .qty-input { 
-                width: 20px; 
-                font-size: 0.8rem; 
-            }
-
-            /* Checkout bar tetap nyaman di klik */
-            .checkout-bar { 
-                padding: 10px 15px; 
-                width: 95%; 
-                border-radius: 30px;
-            }
-            .total-info p { font-size: 1rem; }
-            .btn-send { padding: 8px 12px; font-size: 0.7rem; }
+        .close-modal {
+            position: absolute; top: 20px; right: 20px; font-size: 1.5rem;
+            cursor: pointer; color: var(--dark);
         }
+
+    /* --- RESPONSIVE ADJUSTMENTS --- */
+@media (max-width: 600px) {
+    .container { padding: 15px; }
+    .section-title { font-size: 1.2rem; margin: 30px 0 20px; }
+    .logo-img { width: 50px; }
+    .header-text h1 { font-size: 1.6rem; }
+    .header { padding: 40px 15px; }
+
+    /* Ubah dari 3 kolom menjadi 2 kolom agar tidak terlalu sempit */
+    .menu-grid { 
+        grid-template-columns: repeat(2, 1fr); 
+        gap: 12px; 
+    }
+
+    /* Penyesuaian ukuran elemen agar proporsional di 2 kolom */
+    .menu-img-wrapper { height: 130px; } 
+    .menu-content { padding: 12px; }
+    .menu-content h3 { 
+        font-size: 0.9rem; 
+        height: 2.8em; 
+        margin-bottom: 8px;
+    }
+    .price { font-size: 1rem; }
+    
+    .qty-control { 
+        gap: 8px; 
+        padding: 6px; 
+    }
+    .qty-btn { 
+        width: 30px; 
+        height: 30px; 
+        font-size: 1rem; 
+    }
+    .qty-input { 
+        width: 30px; 
+        font-size: 1rem; 
+    }
+
+    .checkout-bar { 
+        padding: 12px 20px; 
+        width: 90%; 
+    }
+    .total-info p { font-size: 1.1rem; }
+    .btn-send { padding: 10px 15px; font-size: 0.8rem; }
+}
+
+/* Tambahan untuk layar sangat kecil (di bawah 380px) */
+@media (max-width: 380px) {
+    .menu-grid { 
+        grid-template-columns: 1fr; /* Jadi 1 baris saja kalau layar kekecilan */
+    }
+    .menu-img-wrapper { height: 180px; }
+}
     </style>
 </head>
 <body>
@@ -484,43 +311,52 @@
 <div class="header">
     <div class="header-content">
         <img src="Logo Polsri.png" class="logo-img" alt="Logo Polsri">
-        
         <div class="header-text">
             <h1>Singgah Kudai</h1>
             <p>Premium Warteg Order • Tekkom Polsrí</p>
+            <br>
+            <button class="btn-about" onclick="toggleModal(true)">TENTANG KAMI</button>
         </div>
-
-        <img src="Logo Tekkom.png" class="logo-img" alt="Logo Tekkom">
+        <img src="Logo Polsri.png" class="logo-img" alt="Logo Tekkom">
     </div>
 </div>
 
 <div class="container">
     <h2 class="section-title">Menu Lezat Hari Ini</h2>
-    <div class="menu-grid" id="menu-container">
-        </div>
+    <div class="menu-grid" id="menu-container"></div>
 
-    <div class="footer-info">
+    <div class="footer-info" style="text-align: center; padding: 60px 20px 140px; color: #7f8c8d; font-size: 0.85rem; border-top: 1px solid #ddd; margin-top: 60px;">
         📍 Jl. Gang Timor 2 Puncak Sekuning <br>
         Buka Setiap Hari <strong>(08:00 - 18:00)</strong> <br>
         © 2026 Warteg Singgah Kudai - Crafted by Teknisi Pribadi Kelompok 1
     </div>
 </div>
 
+<div class="modal" id="aboutModal">
+    <div class="modal-content">
+        <span class="close-modal" onclick="toggleModal(false)">&times;</span>
+        <h2 style="color: var(--color-oranye); margin-bottom: 15px;">Tentang Singgah Kudai</h2>
+        <p style="line-height: 1.6; color: #555;">
+            <strong>Singgah Kudai</strong> adalah sebuah konsep Warteg Premium yang memadukan cita rasa tradisional khas Puncak Sekuning dengan kemudahan teknologi digital. <br><br>
+            Project ini dikembangkan oleh <strong>Kelompok 1 Tekkom Polsri</strong> untuk memberikan pengalaman memesan nasi bungkus yang cepat, modern, dan tetap akrab di kantong mahasiswa.
+        </p>
+        <button class="btn-about" style="background: var(--color-biru); color: white; border: none; margin-top: 20px;" onclick="toggleModal(false)">OKE, SIAP!</button>
+    </div>
+</div>
+
 <div class="checkout-bar" id="checkout-bar">
     <div class="total-info">
         <input type="text" id="customer-name" placeholder="Nama Anda..." style="width: 100%; border: none; border-bottom: 2px solid var(--color-ungu); background: transparent; margin-bottom: 10px; font-family: inherit; font-weight: 600; outline: none;">
-        
-        <h4>Estimasi Total</h4>
+        <h4 style="margin: 0; font-size: 0.8rem; text-transform: uppercase; color: var(--color-ungu);">Estimasi Total</h4>
         <p>Rp <span id="display-total">0</span></p>
     </div>
     <button class="btn-send" onclick="sendWhatsApp()">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.588-5.946 0-6.556 5.332-11.888 11.888-11.888 3.176 0 6.161 1.237 8.404 3.48s3.481 5.229 3.481 8.406c0 6.555-5.332 11.887-11.888 11.887-2.012 0-3.991-.511-5.741-1.486l-6.143 1.61zm6.205-4.415l.344.204c1.428.85 3.074 1.298 4.764 1.298 4.978 0 9.032-4.053 9.032-9.032 0-2.411-.938-4.677-2.643-6.381-1.705-1.704-3.97-2.641-6.381-2.641-4.978 0-9.033 4.054-9.033 9.032 0 1.764.512 3.486 1.48 4.98l.225.347-1.003 3.666 3.762-.987z"/></svg>
-        PESAN VIA WHATSAPP
+        PESAN WA
     </button>
 </div>
 
 <script>
-// DATA MENU SESUAI TABEL JPG image_dfb53a.png
     const menuData = [
         { name: "Nasi Kuah Kari", price: 12000, img: "kari.jpg" },
         { name: "Lele Goreng Sambal", price: 9000, img: "lele goreng sambal.jpg" },
@@ -540,20 +376,18 @@
         { name: "Nasi Terong Goreng", price: 12000, img: "nasi terong goreng.jpg" },
         { name: "Gorengan", price: 1000, img: "gorengan.jpg" }
     ];
+
     const menuContainer = document.getElementById('menu-container');
 
-    // Generate Menu Cards secara Otomatis
-    menuData.forEach(item => {
+    menuData.forEach((item, index) => {
         const cardHtml = `
-            <div class="menu-card" style="animation-delay: ${item.delay * 0.1}s">
+            <div class="menu-card" style="animation-delay: ${index * 0.1}s">
                 <div class="menu-img-wrapper">
                     <img src="${item.img}" class="menu-img" alt="${item.name}">
                 </div>
                 <div class="menu-content">
                     <h3>${item.name}</h3>
-                    <div class="price-row">
-                        <p class="price">Rp ${item.price.toLocaleString('id-ID')}</p>
-                    </div>
+                    <p class="price">Rp ${item.price.toLocaleString('id-ID')}</p>
                     <div class="qty-control">
                         <button class="qty-btn" onclick="adjustQty(this, -1)">-</button>
                         <input type="number" class="qty-input" data-name="${item.name}" data-price="${item.price}" value="0" min="0" onchange="updateTotal(true)">
@@ -565,20 +399,20 @@
         menuContainer.innerHTML += cardHtml;
     });
 
-    // Interaktif: Tombol + dan -
+    function toggleModal(show) {
+        document.getElementById('aboutModal').style.display = show ? 'flex' : 'none';
+    }
+
     function adjustQty(btn, change) {
         const input = btn.parentElement.querySelector('.qty-input');
         let currentQty = parseInt(input.value) || 0;
-        let newQty = currentQty + change;
-        if (newQty < 0) newQty = 0;
+        let newQty = Math.max(0, currentQty + change);
         input.value = newQty;
-        updateTotal(true); // Hitung total & update visual card
+        updateTotal(true);
     }
 
-    // Hitung Total dan Update Checkout Bar
     function updateTotal(shouldStyleCard = false) {
         let total = 0;
-        let hasOrder = false;
         const inputs = document.querySelectorAll('.qty-input');
         const checkoutBar = document.getElementById('checkout-bar');
 
@@ -586,34 +420,20 @@
             const qty = parseInt(input.value) || 0;
             total += qty * parseInt(input.dataset.price);
             
-            // Interaktif: Beri style pada card yang dipesan
             if (shouldStyleCard) {
                 const card = input.closest('.menu-card');
-                if (qty > 0) {
-                    card.classList.add('has-order');
-                    hasOrder = true; // Ada setidaknya satu pesanan
-                } else {
-                    card.classList.remove('has-order');
-                }
+                qty > 0 ? card.classList.add('has-order') : card.classList.remove('has-order');
             }
         });
 
         document.getElementById('display-total').innerText = total.toLocaleString('id-ID');
-
-        // Tampilkan/Sembunyikan Checkout Bar secara Smooth
-        if (total > 0) {
-            checkoutBar.classList.add('visible');
-        } else {
-            checkoutBar.classList.remove('visible');
-        }
+        total > 0 ? checkoutBar.classList.add('visible') : checkoutBar.classList.remove('visible');
     }
 
-    // Kirim List Pesanan via WhatsApp
-function sendWhatsApp() {
+    function sendWhatsApp() {
         const phone = "628137990594";
         const customerName = document.getElementById('customer-name').value.trim();
         
-        // Validasi Nama
         if (!customerName) {
             alert("Isi nama dulu ya, Bos!");
             document.getElementById('customer-name').focus();
@@ -624,30 +444,22 @@ function sendWhatsApp() {
         message += `Nama Pemesan: *${customerName}*%0A`;
         message += `---------------------------%0A`;
         
-        const inputs = document.querySelectorAll('.qty-input');
-        let orderList = "";
-
-        inputs.forEach(input => {
-            const qty = input.value;
-            if (qty > 0) {
-                orderList += `✅ *${input.dataset.name}* (${qty}x)%0A`;
+        let hasItems = false;
+        document.querySelectorAll('.qty-input').forEach(input => {
+            if (input.value > 0) {
+                message += `✅ *${input.dataset.name}* (${input.value}x)%0A`;
+                hasItems = true;
             }
         });
 
-        if (!orderList) {
+        if (!hasItems) {
             alert("Pilih menunya dulu ya, Bos!");
             return;
         }
 
-        const totalStr = document.getElementById('display-total').innerText;
-        message += orderList;
-        message += `---------------------------%0A*TOTAL TAGIHAN: Rp ${totalStr}*`;
-        
+        message += `---------------------------%0A*TOTAL TAGIHAN: Rp ${document.getElementById('display-total').innerText}*`;
         window.open(`https://wa.me/${phone}?text=${message}`, '_blank');
     }
-
-    // Inisialisasi total saat load (pastikan checkout sembunyi)
-    updateTotal(true);
 </script>
 
 </body>
