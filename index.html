@@ -508,6 +508,8 @@
 
 <div class="checkout-bar" id="checkout-bar">
     <div class="total-info">
+        <input type="text" id="customer-name" placeholder="Nama Anda..." style="width: 100%; border: none; border-bottom: 2px solid var(--color-ungu); background: transparent; margin-bottom: 10px; font-family: inherit; font-weight: 600; outline: none;">
+        
         <h4>Estimasi Total</h4>
         <p>Rp <span id="display-total">0</span></p>
     </div>
@@ -607,9 +609,21 @@
     }
 
     // Kirim List Pesanan via WhatsApp
-    function sendWhatsApp() {
+function sendWhatsApp() {
         const phone = "628137990594";
-        let message = "*PESANAN WARTEG SINGGAH KUDAI*%0A---------------------------%0A";
+        const customerName = document.getElementById('customer-name').value.trim();
+        
+        // Validasi Nama
+        if (!customerName) {
+            alert("Isi nama dulu ya, Bos!");
+            document.getElementById('customer-name').focus();
+            return;
+        }
+
+        let message = `*PESANAN WARTEG SINGGAH KUDAI*%0A`;
+        message += `Nama Pemesan: *${customerName}*%0A`;
+        message += `---------------------------%0A`;
+        
         const inputs = document.querySelectorAll('.qty-input');
         let orderList = "";
 
@@ -620,7 +634,6 @@
             }
         });
 
-        // Pengaman: Jangan biarkan pesanan kosong dikirim
         if (!orderList) {
             alert("Pilih menunya dulu ya, Bos!");
             return;
