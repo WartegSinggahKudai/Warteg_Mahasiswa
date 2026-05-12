@@ -150,14 +150,32 @@
         /* --- MAIN CONTAINER --- */
         .container { max-width: 1200px; margin: 0 auto; padding: 30px; }
 
-        .section-title {
-            font-size: 1.6rem; margin: 50px 0 30px; display: flex; align-items: center; gap: 15px;
-            font-weight: 700; color: var(--color-biru);
-            position: relative;
+        /* --- ANIMASI SECTION TITLE --- */
+        @keyframes slideInTitle {
+            from { opacity: 0; transform: translateX(-30px); }
+            to { opacity: 1; transform: translateX(0); }
         }
+
+        .section-title {
+            font-family: 'Bangers', system-ui; /* Font keren yang sama dengan header */
+            font-size: 2.2rem; 
+            margin: 50px 0 30px; 
+            display: flex; 
+            align-items: center; 
+            gap: 15px;
+            font-weight: normal; 
+            color: #000000; /* Warna hitam pekat */
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            animation: slideInTitle 1s ease-out; /* Animasi masuk dari kiri */
+        }
+
         .section-title::after {
-            content: ""; flex-grow: 1; height: 3px;
-            background: linear-gradient(to right, var(--color-biru), var(--color-ungu), transparent);
+            content: ""; 
+            flex-grow: 1; 
+            height: 4px; /* Garis sedikit lebih tebal */
+            /* Warna garis gradasi dari hitam ke transparan */
+            background: linear-gradient(to right, #000000, #FF8C00, transparent);
             border-radius: 10px;
         }
 
