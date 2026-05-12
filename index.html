@@ -251,59 +251,55 @@
             cursor: pointer; color: var(--dark);
         }
 
-    /* --- RESPONSIVE ADJUSTMENTS --- */
-@media (max-width: 600px) {
-    .container { padding: 15px; }
-    .section-title { font-size: 1.2rem; margin: 30px 0 20px; }
-    .logo-img { width: 50px; }
-    .header-text h1 { font-size: 1.6rem; }
-    .header { padding: 40px 15px; }
+/* --- RESPONSIVE ADJUSTMENTS (3 KOLOM HP) --- */
+        @media (max-width: 600px) {
+            .container { padding: 10px; }
+            .section-title { font-size: 1.1rem; margin: 20px 0 15px; }
+            .logo-img { width: 40px; }
+            .header-text h1 { font-size: 1.3rem; }
+            .header { padding: 30px 10px; }
 
-    /* Ubah dari 3 kolom menjadi 2 kolom agar tidak terlalu sempit */
-    .menu-grid { 
-        grid-template-columns: repeat(2, 1fr); 
-        gap: 12px; 
-    }
+            /* Paksa jadi 3 kolom menyamping */
+            .menu-grid { 
+                grid-template-columns: repeat(3, 1fr); 
+                gap: 8px; 
+            }
 
-    /* Penyesuaian ukuran elemen agar proporsional di 2 kolom */
-    .menu-img-wrapper { height: 130px; } 
-    .menu-content { padding: 12px; }
-    .menu-content h3 { 
-        font-size: 0.9rem; 
-        height: 2.8em; 
-        margin-bottom: 8px;
-    }
-    .price { font-size: 1rem; }
-    
-    .qty-control { 
-        gap: 8px; 
-        padding: 6px; 
-    }
-    .qty-btn { 
-        width: 30px; 
-        height: 30px; 
-        font-size: 1rem; 
-    }
-    .qty-input { 
-        width: 30px; 
-        font-size: 1rem; 
-    }
+            /* Penyesuaian ukuran elemen agar muat di 3 kolom */
+            .menu-img-wrapper { height: 80px; } /* Gambar diperkecil */
+            .menu-content { padding: 8px; }
+            .menu-content h3 { 
+                font-size: 0.7rem; /* Font nama menu diperkecil */
+                height: 2.5em; 
+                margin-bottom: 5px;
+            }
+            .price { font-size: 0.75rem; }
+            
+            .qty-control { 
+                gap: 3px; 
+                padding: 4px; 
+                border-radius: 8px;
+            }
+            .qty-btn { 
+                width: 22px; 
+                height: 22px; 
+                font-size: 0.8rem; 
+                border-width: 1px;
+            }
+            .qty-input { 
+                width: 20px; 
+                font-size: 0.8rem; 
+            }
 
-    .checkout-bar { 
-        padding: 12px 20px; 
-        width: 90%; 
-    }
-    .total-info p { font-size: 1.1rem; }
-    .btn-send { padding: 10px 15px; font-size: 0.8rem; }
-}
-
-/* Tambahan untuk layar sangat kecil (di bawah 380px) */
-@media (max-width: 380px) {
-    .menu-grid { 
-        grid-template-columns: 1fr; /* Jadi 1 baris saja kalau layar kekecilan */
-    }
-    .menu-img-wrapper { height: 180px; }
-}
+            /* Checkout bar tetap nyaman di klik */
+            .checkout-bar { 
+                padding: 10px 15px; 
+                width: 95%; 
+                border-radius: 30px;
+            }
+            .total-info p { font-size: 1rem; }
+            .btn-send { padding: 8px 12px; font-size: 0.7rem; }
+        }
     </style>
 </head>
 <body>
