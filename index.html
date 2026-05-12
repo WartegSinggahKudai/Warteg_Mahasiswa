@@ -3,7 +3,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Warteg Singgah Kudai - Premium Order</title>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
     <style>
         :root {
             --primary: #FF8C00;    /* Deep Orange */
@@ -25,7 +25,7 @@
         * { box-sizing: border-box; margin: 0; padding: 0; }
         
         body {
-            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-family: 'Montserrat', sans-serif; /* Font dasar yang bersih */
             background-color: var(--bg);
             color: var(--dark);
             overflow-x: hidden;
@@ -56,17 +56,28 @@
 
         /* --- HEADER AREA --- */
         .header {
-            background: linear-gradient(135deg, rgba(26,26,26,0.95), rgba(26,26,26,0.85)), url('image_e08f90.jpg');
-            background-size: cover;
-            background-position: center;
-            color: white;
+    /* Menggunakan gradient oranye ke kuning yang cerah */
+            background: linear-gradient(135deg, #FF8C00, #FFD700);
+            color: #2d3436; /* Mengubah teks jadi gelap agar kontras dengan background cerah */
             text-align: center;
             padding: 70px 20px;
             border-radius: 0 0 40px 40px;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+            box-shadow: 0 15px 35px rgba(255, 140, 0, 0.2);
             animation: headerLoad 1s var(--ease);
             position: relative;
             overflow: hidden;
+}
+
+        .header-text p {
+            margin: 8px 0 0; 
+            font-weight: 700; 
+            font-size: 1rem;
+            /* Warna biru tua atau hitam agar terbaca jelas */
+            color: #0047AB; 
+            border-bottom: 2px solid #0047AB; 
+            display: inline-block; 
+            padding-bottom: 5px;
+            text-shadow: 1px 1px 0px rgba(255, 255, 255, 0.5);
         }
 
         .header::after {
@@ -82,39 +93,54 @@
         }
 
         .logo-img {
-            width: 80px; height: auto;
-            filter: drop-shadow(0 0 12px rgba(255,215,0,0.6));
+            width: 80px; 
+            height: auto;
+            /* Memberikan efek glow hitam yang halus namun tegas */
+            filter: drop-shadow(0 0 15px rgba(0, 0, 0, 0.6));
             transition: transform 0.5s var(--ease);
         }
-        .logo-img:hover { transform: rotate(15deg) scale(1.1); }
+
+        .logo-img:hover { 
+            transform: rotate(15deg) scale(1.15); 
+            /* Saat di-hover, bayangan makin kuat */
+            filter: drop-shadow(0 0 20px rgba(0, 0, 0, 0.8));
+        }
 
         .header-text h1 {
-            margin: 0; font-size: 2.8rem; font-weight: 800;
-            text-transform: uppercase; letter-spacing: 2px;
-            background: linear-gradient(45deg, var(--color-kuning), var(--color-oranye));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));
+            margin: 0; 
+            font-family: 'Bangers', system-ui; /* Font bergaya retro/komik yang keren */
+            font-size: 4rem; /* Ukuran diperbesar karena font ini ramping */
+            font-weight: normal;
+            text-transform: uppercase; 
+            letter-spacing: 3px;
+            color: #2d3436; 
+            text-shadow: 3px 3px 0px rgba(255, 255, 255, 1); /* Efek bayangan tegas */
         }
         .header-text p {
-            margin: 8px 0 0; font-weight: 300; font-size: 0.95rem;
-            color: rgba(255,255,255,0.8);
-            border-bottom: 2px solid var(--color-biru); display: inline-block; padding-bottom: 5px;
-        }
+                margin: 8px 0 0; 
+                font-weight: 700; 
+                font-size: 1rem;
+                /* Ganti jadi biru tua atau hitam supaya kontras */
+                color: #003366; 
+                /* Garis bawahnya juga kita pertebal sedikit */
+                border-bottom: 2px solid #003366; 
+                display: inline-block; 
+                padding-bottom: 5px;
+                /* Tambahin bayangan putih halus di belakang huruf biar makin 'nyala' */
+                text-shadow: 1px 1px 0px rgba(255, 255, 255, 0.4);
+            }
 
         /* Tombol Tentang */
         .btn-about {
-            background: rgba(255, 255, 255, 0.1);
-            border: 1px solid var(--color-kuning);
-            color: var(--color-kuning);
-            padding: 8px 20px;
+            background: #2d3436; /* Tombol jadi gelap */
+            border: none;
+            color: #FFD700; /* Tulisan tombol jadi kuning emas */
+            padding: 10px 25px;
             border-radius: 20px;
             cursor: pointer;
             margin-top: 15px;
-            font-family: inherit;
-            font-weight: 600;
-            transition: all 0.3s;
-            backdrop-filter: blur(5px);
+            font-weight: 800;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
         }
         .btn-about:hover {
             background: var(--color-kuning);
